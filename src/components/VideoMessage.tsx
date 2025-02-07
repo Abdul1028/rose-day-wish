@@ -37,9 +37,7 @@ export default function VideoMessage({ onComplete }: VideoMessageProps) {
         </button>
       </div>
     `;
-
     document.body.appendChild(alertBox);
-
     // Add click event to the button
     const button = alertBox.querySelector('button');
     if (button) {
@@ -97,7 +95,7 @@ export default function VideoMessage({ onComplete }: VideoMessageProps) {
         >
           <source src="/video/message.mp4" type="video/mp4" />
           <source src="/video/message.webm" type="video/webm" />
-          Your browser does not support the video tag.
+          Your browser does not support the video tag
         </video>
       </div>
 
