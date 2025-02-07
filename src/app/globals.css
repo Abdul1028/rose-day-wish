@@ -3,19 +3,107 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fff5f5;
+  --foreground: #4a1c1c;
+  --primary: #ff6b6b;
+  --secondary: #4a1c1c;
+  --accent: #ff9999;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #2d1517;
+    --foreground: #fff5f5;
+    --primary: #ff9999;
+    --secondary: #fff5f5;
+    --accent: #ff6b6b;
   }
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer components {
+  .rose-button {
+    @apply px-6 py-3 bg-primary text-white rounded-full 
+           transition-all duration-300 hover:scale-105 
+           font-dancing text-xl shadow-lg hover:shadow-xl
+           active:scale-95;
+  }
+  
+  .garden-section {
+    @apply min-h-screen flex flex-col items-center justify-center 
+           p-8 gap-8 relative overflow-hidden;
+  }
+
+  .memory-card {
+    @apply relative bg-white/90 dark:bg-black/90 p-6 rounded-lg shadow-xl
+           hover:transform hover:scale-105 transition-all duration-300;
+  }
+}
+
+.font-dancing {
+  font-family: var(--font-dancing);
+}
+
+.font-playfair {
+  font-family: var(--font-playfair);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in {
+  animation: slideIn 0.5s ease-out forwards;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(100px) scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) scale(1);
+    opacity: 0;
+  }
+}
+
+.animate-float-up {
+  animation: floatUp 3s ease-out forwards;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+.delay-600 {
+  animation-delay: 600ms;
 }

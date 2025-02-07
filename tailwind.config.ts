@@ -11,6 +11,13 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        primary: "var(--primary)",
+        secondary: "var(--secondary)",
+        accent: "var(--accent)",
+      },
+      fontFamily: {
+        dancing: ["var(--font-dancing)"],
+        playfair: ["var(--font-playfair)"],
       },
     },
   },
