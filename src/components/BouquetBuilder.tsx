@@ -59,7 +59,7 @@ export default function BouquetBuilder() {
     const rect = e.currentTarget.getBoundingClientRect();
     const x = ((e.clientX - rect.left) / rect.width) * 100;
     const y = ((e.clientY - rect.top) / rect.height) * 100;
-    const rotation = Math.random() * 360; // Random rotation for variety
+    const rotation = Math.random() * 360;
 
     if (selectedRose) {
       setRoses(prev => [...prev, {
@@ -89,7 +89,7 @@ export default function BouquetBuilder() {
     const rect = e.currentTarget.getBoundingClientRect();
     const x = ((touch.clientX - rect.left) / rect.width) * 100;
     const y = ((touch.clientY - rect.top) / rect.height) * 100;
-    const rotation = Math.random() * 360; // Add random rotation like in handleCanvasClick
+    const rotation = Math.random() * 360;
 
     setRoses(prev => [...prev, {
       id: `rose-${Date.now()}`,

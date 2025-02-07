@@ -1,9 +1,18 @@
 import type { LoveNote, Memory } from "@/types";
 
 export const COUPLE = {
-  from: "Kaustubh",
-  to: "Shravani"
+  from: "Abdul",
+  to: "Mahek"
 };
+
+export const ROSE_MESSAGES = [
+  "Your smile brightens my darkest days 🌹",
+  "Every moment with you feels magical ✨",
+  "You make my world complete 💝",
+  "My heart beats only for you 💓",
+  "You're the most beautiful rose in my garden 🌸",
+  "Forever yours, my love 💕"
+];
 
 export const LOVE_NOTES: LoveNote[] = [
   {

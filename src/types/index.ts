@@ -1,3 +1,8 @@
+export interface Position {
+  x: number;
+  y: number;
+}
+
 export interface LoveNote {
   id: number;
   message: string;
@@ -7,7 +12,6 @@ export interface Memory {
   id: number;
   date: string;
   caption: string;
-  imageUrl?: string;
 }
 
 export interface Couple {
@@ -17,24 +21,18 @@ export interface Couple {
 
 export interface Decoration {
   id: string;
-  type: 'ribbon' | 'glitter' | 'heart' | 'butterfly' | 'leaves';
-  color?: string;
-  position?: {
-    x: number;
-    y: number;
-  };
-  rotation?: number;
+  type: 'heart' | 'butterfly' | 'glitter' | 'leaves' | 'ribbon';
+  color: string;
+  position: Position;
+  rotation: number;
 }
 
 export interface Rose {
   id: string;
   type: 'red' | 'pink' | 'white';
-  variant: 'single' | 'bunch' | 'bud';
-  position?: {
-    x: number;
-    y: number;
-  };
-  rotation?: number;
+  variant: 'single' | 'bunch';
+  position: Position;
+  rotation: number;
 }
 
 export interface Bouquet {

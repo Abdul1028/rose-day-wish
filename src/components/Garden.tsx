@@ -6,49 +6,49 @@ import VideoMessage from './VideoMessage';
 import BouquetBuilder from './BouquetBuilder';
 import GiveRoses from './GiveRoses';
 import HerPhoto from './HerPhoto';
+import { ROSE_MESSAGES } from '@/config/content';
 
 export default function Garden() {
   const [pluckedCount, setPluckedCount] = useState(0);
   const [currentSection, setCurrentSection] = useState<'roses' | 'memories' | 'video' | 'bouquet'>('roses');
   const [hasReceivedRoses, setHasReceivedRoses] = useState(false);
 
-  // Only show navigation after receiving roses
-  const showNav = currentSection !== 'bouquet' || hasReceivedRoses;
+  const goToNextSection = () => {
+    switch (currentSection) {
+      case 'roses':
+        setCurrentSection('memories');
+        break;
+      case 'memories':
+        setCurrentSection('video');
+        break;
+      case 'video':
+        setCurrentSection('bouquet');
+        break;
+    }
+  };
+
+  const goToPreviousSection = () => {
+    switch (currentSection) {
+      case 'memories':
+        setCurrentSection('roses');
+        break;
+      case 'video':
+        setCurrentSection('memories');
+        break;
+      case 'bouquet':
+        setCurrentSection('video');
+        break;
+    }
+  };
+
+  const getRandomMessage = () => {
+    const randomIndex = Math.floor(Math.random() * ROSE_MESSAGES.length);
+    return ROSE_MESSAGES[randomIndex];
+  };
 
   return (
-    <div className="min-h-screen">
-      {showNav && (
-        <nav className="fixed top-0 left-0 right-0 bg-background/80 backdrop-blur-sm z-40">
-          <div className="flex justify-center gap-4 p-4 flex-wrap">
-            <button
-              onClick={() => setCurrentSection('roses')}
-              className={`rose-button !py-2 ${currentSection === 'roses' ? 'opacity-100' : 'opacity-70'}`}
-            >
-              Roses
-            </button>
-            <button
-              onClick={() => setCurrentSection('memories')}
-              className={`rose-button !py-2 ${currentSection === 'memories' ? 'opacity-100' : 'opacity-70'}`}
-            >
-              Memories
-            </button>
-            <button
-              onClick={() => setCurrentSection('video')}
-              className={`rose-button !py-2 ${currentSection === 'video' ? 'opacity-100' : 'opacity-70'}`}
-            >
-              Video Message
-            </button>
-            <button
-              onClick={() => setCurrentSection('bouquet')}
-              className={`rose-button !py-2 ${currentSection === 'bouquet' ? 'opacity-100' : 'opacity-70'}`}
-            >
-              Build Bouquet
-            </button>
-          </div>
-        </nav>
-      )}
-
-      <div className="pt-20">
+    <div className="min-h-screen relative flex flex-col justify-center">
+      <div className="flex-1 flex flex-col justify-center pt-4 pb-24">
         {currentSection === 'bouquet' && !hasReceivedRoses ? (
           <GiveRoses onComplete={() => setHasReceivedRoses(true)} />
         ) : (
@@ -63,24 +63,54 @@ export default function Garden() {
                   {Array.from({ length: 6 }).map((_, index) => (
                     <Rose
                       key={index}
-                      message="I love you more each day! 🌹"
+                      message={getRandomMessage()}
                       onPluck={() => setPluckedCount(prev => prev + 1)}
                     />
                   ))}
                 </div>
                 
                 {pluckedCount === 6 && (
-                  <p className="mt-8 text-xl font-dancing text-primary animate-fade-in">
-                    You've found all my roses! ❤️
-                  </p>
+                  <div className="mt-8 text-center">
+                    <p className="text-xl font-dancing text-primary animate-fade-in mb-4">
+                      You've found all my roses! ❤️
+                    </p>
+                    <button 
+                      onClick={goToNextSection}
+                      className="rose-button animate-bounce"
+                    >
+                      Continue to Our Memories →
+                    </button>
+                  </div>
                 )}
               </section>
             )}
-            {currentSection === 'memories' && <HerPhoto />}
-            {currentSection === 'video' && <VideoMessage />}
+            {currentSection === 'memories' && (
+              <div className="relative">
+                <HerPhoto onContinue={goToNextSection} />
+              </div>
+            )}
+            {currentSection === 'video' && (
+              <div className="relative">
+                <VideoMessage onComplete={() => setCurrentSection('bouquet')} />
+              </div>
+            )}
             {currentSection === 'bouquet' && hasReceivedRoses && <BouquetBuilder />}
           </>
         )}
+      </div>
+
+      {/* Progress indicator */}
+      <div className="fixed bottom-4 left-0 right-0 flex justify-center gap-2 px-4">
+        {['roses', 'memories', 'video', 'bouquet'].map((section) => (
+          <div
+            key={section}
+            className={`w-2 h-2 rounded-full transition-all ${
+              currentSection === section 
+                ? 'bg-primary w-4' 
+                : 'bg-primary/30'
+            }`}
+          />
+        ))}
       </div>
     </div>
   );

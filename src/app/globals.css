@@ -35,7 +35,7 @@ body {
   
   .garden-section {
     @apply min-h-screen flex flex-col items-center justify-center 
-           p-8 gap-8 relative overflow-hidden;
+           px-4 py-8 relative overflow-hidden;
   }
 
   .memory-card {
@@ -106,4 +106,50 @@ body {
 
 .delay-600 {
   animation-delay: 600ms;
+}
+
+.navigation-buttons {
+  @apply fixed left-0 right-0 flex justify-center gap-4 px-4 z-40;
+  bottom: calc(2rem + 24px);
+}
+
+.garden-section > div:last-child {
+  @apply mb-16;
+}
+
+@media (max-height: 700px) {
+  .navigation-buttons {
+    @apply relative bottom-0 mt-8 mb-12;
+    position: static;
+  }
+  
+  .garden-section {
+    @apply min-h-0;
+  }
+}
+
+@keyframes slideUpFade {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.animate-slide-up-fade {
+  animation: slideUpFade 0.5s ease-out forwards;
+}
+
+.toast-container {
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  z-index: 50;
 }

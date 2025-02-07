@@ -3,7 +3,11 @@
 import Image from 'next/image';
 import { COUPLE } from '@/config/content';
 
-export default function HerPhoto() {
+interface HerPhotoProps {
+  onContinue: () => void;
+}
+
+export default function HerPhoto({ onContinue }: HerPhotoProps) {
   return (
     <section className="garden-section overflow-hidden">
       <div className="max-w-4xl mx-auto px-4">
@@ -15,7 +19,7 @@ export default function HerPhoto() {
           {/* Photo */}
           <div className="relative w-full max-w-md aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl">
             <Image
-              src="/images/her-photo.jpeg" // Updated extension from .jpg to .jpeg
+              src="/images/her-photo.jpg"
               alt={COUPLE.to}
               fill
               className="object-cover hover:scale-105 transition-transform duration-700"
@@ -37,9 +41,15 @@ export default function HerPhoto() {
               with you more each day. You're not just beautiful on the outside, but your soul shines 
               with a radiance that takes my breath away.
             </p>
-            <p className="text-primary font-dancing text-xl">
+            <p className="text-primary font-dancing text-xl mb-8">
               You're my perfect rose in this garden of life 🌹
             </p>
+            <button 
+              onClick={onContinue}
+              className="rose-button animate-bounce"
+            >
+              Watch Video →
+            </button>
           </div>
         </div>
       </div>

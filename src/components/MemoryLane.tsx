@@ -25,17 +25,6 @@ export default function MemoryLane() {
                 />
               </div>
               
-              {memory.imageUrl && (
-                <div className="relative w-full h-40 mb-4 rounded-lg overflow-hidden">
-                  <Image
-                    src={memory.imageUrl}
-                    alt={memory.caption}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              )}
-              
               <p className="font-dancing text-primary text-lg mb-2">
                 {new Date(memory.date).toLocaleDateString('en-US', {
                   month: 'long',
