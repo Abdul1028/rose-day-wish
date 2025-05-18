@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Rose Day Wish App
+
+This application allows you to create a personalized Rose Day wish for your special someone.
 
 ## Getting Started
 
-First, run the development server:
+1.  **Clone the Repository:**
+    ```bash
+    git clone <your-repository-url>
+    cd <repository-name>
+    ```
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Configuration
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1.  **Update Couple's Names:**
+    *   Navigate to the `config` directory.
+    *   Open the `content.ts` file.
+    *   Modify the names within this file to reflect the couple you're creating the wish for.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+2.  **Modify Sender and Receiver Names:**
+    *   In the same `config/content.ts` file (or specify if it's elsewhere), find the fields for sender (e.g., `fromName`) and receiver (e.g., `toName`).
+    *   Update these names accordingly.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Customization
 
-## Learn More
+Make your wish even more personal by customizing the media files:
 
-To learn more about Next.js, take a look at the following resources:
+1.  **Modify Your Photo:**
+    *   Replace the placeholder image `public/images/your-photo.jpg` with your desired photo.
+    *   Ensure the new photo has the same name (`your-photo.jpg`) or update the reference in the application code if you use a different name.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2.  **Modify Your Video:**
+    *   Replace the placeholder video `public/video/your-video.mp4` with your desired video.
+    *   Ensure the new video has the same name (`your-video.mp4`) or update the reference in the application code.
+    *   *(Note: The original request mentioned `.mp`, which is not a standard video extension. I've assumed `.mp4`. Please adjust if your video format is different.)*
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3.  **Modify Your Audio:**
+    *   Replace the placeholder audio file `public/music/your-audio.mp3` with your desired music or audio message.
+    *   Ensure the new audio file has the same name (`your-audio.mp3`) or update the reference in the application code.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Enjoy creating and sharing your personalized Rose Day wish!
