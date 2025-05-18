@@ -19,7 +19,7 @@ export default function HerPhoto({ onContinue }: HerPhotoProps) {
           {/* Photo */}
           <div className="relative w-full max-w-md aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl">
             <Image
-              src="/images/her-photo.jpg"
+              src="/images/your-photo.jpg"
               alt={COUPLE.to}
               fill
               className="object-cover hover:scale-105 transition-transform duration-700"

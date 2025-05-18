@@ -1,8 +1,8 @@
 import type { LoveNote, Memory } from "@/types";
 
 export const COUPLE = {
-  from: "Abdul",
-  to: "Mahek"
+  from: "Jack",
+  to: "Rose"
 };
 
 export const ROSE_MESSAGES = [

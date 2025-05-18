@@ -13,7 +13,7 @@ export default function MusicPlayer({ isPlaying, onToggle }: MusicPlayerProps) {
 
   useEffect(() => {
     if (!audioRef.current) {
-      audioRef.current = new Audio('/music/romantic-background.mp3');
+      audioRef.current = new Audio('/music/your-audio.mp3');
       audioRef.current.loop = true;
     }
 

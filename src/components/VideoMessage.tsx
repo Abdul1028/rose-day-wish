@@ -93,8 +93,8 @@ export default function VideoMessage({ onComplete }: VideoMessageProps) {
           muted
           onEnded={handleVideoEnd}
         >
-          <source src="/video/message.mp4" type="video/mp4" />
-          <source src="/video/message.webm" type="video/webm" />
+          <source src="/video/your-video.mp4" type="video/mp4" />
+          <source src="/video/your-video.webm" type="video/webm" />
           Your browser does not support the video tag
         </video>
       </div>
